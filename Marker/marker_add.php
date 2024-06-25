@@ -7,8 +7,8 @@ if (isset($_POST['Submit'])) {
     $lng = $_POST['lng_pos'];
 
 
-    $result = mysqli_query($conn, "INSERT INTO marker(kode_kecamatan, keterangan, lat_pos, lng_pos)
-VALUES('$kode_kecamatan','$keterangan','$lat','$lng')");
+    $result = mysqli_query($conn, "INSERT INTO marker(kode_kecamatan, keterangan, lat_pos, lng_pos, tanggal)
+VALUES('$kode_kecamatan','$keterangan','$lat','$lng','" . date("Y-m-d h:i:sa") . "')");
     header("Location:?page=marker-show");
 }
 ?>

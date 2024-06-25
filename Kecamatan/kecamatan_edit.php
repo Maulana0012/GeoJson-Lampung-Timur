@@ -2,6 +2,7 @@
 // Display selected user data based on id
 // Getting id from url
 $id = $_GET['id'];
+
 // Fetech user data based on id
 $result = mysqli_query($conn, "SELECT * FROM kecamatan WHERE id=$id");
 while ($data = mysqli_fetch_array($result)) {
@@ -16,7 +17,8 @@ while ($data = mysqli_fetch_array($result)) {
                 <h3 class="panel-title">Ubah Data Kecamatan</h3>
             </div>
             <div class="card-body">
-                <form method="POST" action="?page=kecamatan-update" class="form-horizontal">
+                <form method="POST" action="?page=kecamatan-update" class="form-horizontal"
+                    enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="kode_kecamatan" class="col-sm-2 control-label">Kode Kecamatan</label>
                         <div class="col-sm-10">
@@ -32,9 +34,15 @@ while ($data = mysqli_fetch_array($result)) {
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="geojson_file_name" class="col-sm-2 control-label">File Geojson</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" name="geojson_file" id="geojson_file" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <input type="hidden" name="id" value=<?php echo $_GET['id']; ?>>
-                            <input type="submit" name="update" class="btn btn-primary" value="Update">
+                            <input type="submit" name="update" class="btn btn-primary" value="update">
                             <input type="reset" name="reset" class="btn btn-warning" value="Reset">
                         </div>
                     </div>

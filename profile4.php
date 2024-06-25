@@ -2,12 +2,12 @@
 <div class="row">
     <div class="col-md-12">
         <div class="text-center">
-            <img src="img/Me.jpg" alt="Me" width="160" class="rounded-circle">
+            <img src="" alt="Me" width="160" class="rounded-circle">
             <table class="table mt-4" style="width:100%; margin:0 auto;">
                 <tbody>
                     <tr>
                         <td align="right" width="50%"><strong>NPM :</strong></td>
-                        <td align="left" width="50%">2210010243</td>
+                        <td align="left" width="50%">2210010096</td>
                     </tr>
                     <tr>
                         <td align="right" width="50%"><strong>Fakultas / Program Studio :</strong></td>
@@ -15,7 +15,7 @@
                     </tr>
                     <tr>
                         <td align="right" width="50%"><strong>Nama Lengkap :</strong></td>
-                        <td align="left" width="50%">Muhammad Fadhil Hamidi</td>
+                        <td align="left" width="50%">Andi Rimba Patabai Pattanri</td>
                     </tr>
                     <tr>
                         <td align="right" width="50%"><strong>Media Sosial :</strong></td>

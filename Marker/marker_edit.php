@@ -1,4 +1,23 @@
 <?php
+if (isset($_POST['update'])) {
+    $geojson_file_name = $_FILES['geojson_file']['name'];
+    // file upload to folder upload
+    $tmpFileName = $_FILES['geojson_file']['tmp_name'];
+    $fileType = $_FILES['geojson_file']['type'];
+
+    $fileExt = explode('.', $geojson_file_name);
+    $to_lower_file = strtolower(end($fileExt));
+    $allowed = array('geojson');
+
+    if (in_array($to_lower_file, $allowed)) {
+        // $newFileName = uniqid('', true) . "." . $to_lower_file;
+        move_uploaded_file($tmpFileName, '../upload/' . $geojson_file_name);
+    } else {
+        echo "only geojson file";
+    }
+}
+?>
+<?php
 // Display selected user data based on id
 // Getting id from url
 $id = $_GET['id'];
@@ -16,7 +35,7 @@ while ($data = mysqli_fetch_array($result)) {
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="panel-title">Ubah Data Kecamatan</h3>
+                <h3 class="panel-title">Ubah Data Marker</h3>
             </div>
             <div class="card-body">
                 <form method="POST" action="?page=marker-update" class="form-horizontal">

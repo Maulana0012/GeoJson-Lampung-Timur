@@ -1,8 +1,9 @@
 <?php
 session_start();
-if ($_SESSION['username'] == '') {
+if ($_SESSION['pengguna'] == '') {
     header("location:../index.php");
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,7 +18,7 @@ if ($_SESSION['username'] == '') {
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <link rel="shortcut icon" href="assets/image/BalanganLogo.png" type="image/x-icon">
     <link rel="stylesheet" href="../geojson-project/index-css.css">
-    <title> Praktikum Web 2</title>
+    <title> WEBGIS</title>
     <style>
     body {
         margin-bottom: 6em;
@@ -32,7 +33,7 @@ if ($_SESSION['username'] == '') {
         /* height: 100px; */
         bottom: 0;
         width: 100%;
-        background: #1fb359;
+        background: #0d6efd;
         padding: 10px 0;
         color: #fff;
         font-family: Arial, Helvetica, sans-serif;
@@ -49,11 +50,12 @@ if ($_SESSION['username'] == '') {
     <script src="../assets/js/leaflet-panel-layers/src/leaflet-panel-layers.js"></script>
     <script src="../assets/js/leaflet.ajax.js"></script>
     <script src="../assets/js/leaflet-easyPrint-gh-pages/dist/bundle.js"></script>
+    <?php include 'header.php'; ?>
 
     <div class="container-fluid">
-        <h3 class="mt-4 mb-4">Aplikasi WEBGIS</h3>
-        <div class="row">
+        <div class="row" style="margin-top: 10px;">
             <div class="col-md-3 col-sm-12 mb-4">
+
                 <?php include 'nav.php'; ?>
             </div>
             <div class="col-md-9 col-sm-12">
@@ -62,23 +64,18 @@ if ($_SESSION['username'] == '') {
                 // error_reporting(0);
                 switch ($_GET['page']) {
                     default:
-                        include "dashboard.php";
-                        break;
-                    case "dashboard";
-                        include "dashboard.php";
-                        break;
-                    // user
+                    // Pengguna
                     case "user-add";
-                        include "../user/user_add.php";
+                        include "../Pengguna/user_add.php";
                         break;
                     case "user-show";
-                        include "../user/user_show.php";
+                        include "../Pengguna/user_show.php";
                         break;
                     case "user-edit";
-                        include "../user/user_edit.php";
+                        include "../Pengguna/user_edit.php";
                         break;
                     case "user-update";
-                        include "../user/user_update.php";
+                        include "../Pengguna/user_update.php";
                         break;
                     // Geojson
                     case "index-main";
@@ -117,7 +114,7 @@ if ($_SESSION['username'] == '') {
     </div>
     <footer>
         <div class="container ">
-            <span>&copy; <?php echo date('Y'); ?> - FTI UNISKA</span>
+            <span>&copy; <?php echo date('Y'); ?> - WEBGIS</span>
         </div>
     </footer>
 </body>

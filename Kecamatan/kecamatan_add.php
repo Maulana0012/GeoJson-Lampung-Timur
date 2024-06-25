@@ -6,7 +6,18 @@ if (isset($_POST['Submit'])) {
     $geojson_file_name = $_FILES['geojson_file']['name'];
     // file upload to folder upload
     $tmpFileName = $_FILES['geojson_file']['tmp_name'];
+    $fileType = $_FILES['geojson_file']['type'];
 
+    $fileExt = explode('.', $geojson_file_name);
+    $to_lower_file = strtolower(end($fileExt));
+    $allowed = array('geojson');
+
+    if (in_array($to_lower_file, $allowed)) {
+        // $newFileName = uniqid('', true) . "." . $to_lower_file;
+        move_uploaded_file($tmpFileName, '../upload/' . $geojson_file_name);
+    } else {
+        echo "only geojson file";
+    }
 
     $result = mysqli_query($conn, "INSERT INTO kecamatan(kode_kecamatan, nama_kecamatan, geojson_file_name)
 VALUES('$kode_kecamatan','$nama_kecamatan','$geojson_file_name')");
@@ -20,8 +31,7 @@ VALUES('$kode_kecamatan','$nama_kecamatan','$geojson_file_name')");
                 <strong>Tambah Data Kecamatan</strong>
             </div>
             <div class="card-body">
-                <form method="POST" action="?page=kecamatan-add" class="form-horizontal" enctype="multipart/form-data"
-                    action="file_handler.php">
+                <form method="POST" action="?page=kecamatan-add" class="form-horizontal" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="kode_kecamatan" class="control-label">Kode Kecamatan</label>
                         <input type="text" class="form-control" name="kode_kecamatan"
@@ -34,8 +44,7 @@ VALUES('$kode_kecamatan','$nama_kecamatan','$geojson_file_name')");
                     </div>
                     <div class="form-group">
                         <label for="geojson_file_name" class="control-label">FIle Geojson</label>
-                        <input type="file" class="form-control" name="geojson_file" id="geojson_file"
-                            placeholder="Masukan Nama kecamatan..." required>
+                        <input type="file" class="form-control" name="geojson_file" id="geojson_file" required>
                     </div>
                     <input type="submit" name="Submit" class="btn btn-primary" value="Simpan">
                     <input type="reset" name="reset" class="btn btn-danger" value="Reset">

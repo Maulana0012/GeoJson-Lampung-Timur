@@ -66,7 +66,8 @@ input:checked+.slider:before {
 }
 
 #map {
-    height: 600px;
+    position: relative;
+    height: 700px;
 }
 
 
@@ -82,11 +83,10 @@ input:checked+.slider:before {
     color: black;
 }
 .sidenav {
-    height: 620px;
+    height: 750px;
     width: 0;
     position: fixed;
-    z-index: 1;
-    top: auto;
+    top: 95px;
     right: 0;
     background-color: white;
     overflow-x: hidden;
